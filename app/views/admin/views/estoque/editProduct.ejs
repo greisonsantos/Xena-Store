@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Colo Shop</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Colo Shop Template">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+  <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+  <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+  <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
+  <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
+  <link rel="stylesheet" type="text/css" href="styles/responsive.css">
+</head>
+
+<body>
+
+  <div class="super_container">
+
+    <!-- Header -->
+
+    <header class="header trans_300">
+
+      <!-- Top Navigation -->
+
+      <div class="top_nav">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="top_nav_left"> nada</div>
+            </div>
+            <div class="col-md-6 text-right">
+              <div class="top_nav_right">
+                <ul class="top_nav_menu">
+
+                  <!-- Currency / Language / My Account -->
+
+                  <li class="account">
+                    <a href="#">
+                      Minha Conta
+                      <i class="fa fa-angle-down"></i>
+                    </a>
+                    <ul class="account_selection">
+                      <li><a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a></li>
+                      <li><a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Navigation -->
+
+      <div class="main_nav_container">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 text-right">
+              <div class="logo_container">
+                <a href="#">colo<span>shop</span></a>
+              </div>
+              <nav class="navbar">
+                <ul class="navbar_menu">
+                  <li><a href="#">home</a></li>
+                  <li><a href="camisas.html">camisas</a></li>
+                  <li><a href="#">moletons</a></li>
+                  <li><a href="#">posters</a></li>
+                  <li><a href="#">acessorios</a></li>
+                  <li><a href="contact.html">contato</a></li>
+                </ul>
+                <div class="hamburger_container">
+                  <i class="fa fa-bars" aria-hidden="true"></i>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <br><br><br><br><br>
+    <% if(validacao.length > 0) { %>
+    <div class="alert alert-danger">
+      <strong>Atenção!</strong>
+      <ul>
+        <% for(var i = 0; i < validacao.length; i++) { %>
+        <li><%=validacao[i].msg%></li>
+        <% } %>
+      </ul>
+    </div>
+    <% } %>
+
+    <div class="container">
+      <div class="row">
+       <!-- Form add func-->
+       <div class="container">
+        <div class="card  mx-auto mt-5">
+          <div class="card-header">Cadastrar Produto</div>
+          <div class="card-body">
+            <form action="/inserirProduto" method="post">
+              <div class="form-group">
+                <div class="form-row">
+                  <div class="col-md-6">
+                    <label for="exampleInputName">Nome Produto</label>
+                    <input class="form-control"value="<%=dadosForm.name_product%>"  name="name_product" type="text" aria-describedby="nameHelp" placeholder="Nome do Produto">
+                  </div>
+                  <div class="col-md-3">
+                   <div class="form-group">
+                    <label for="exampleFormControlSelect1">Categoria</label>
+                    <select class="form-control" id="category" name="category" value="<%=dadosForm.category%>">
+                      <option value=""> Selecione uma Categoria</option>
+                      <option value="Camisa">Camisas</option>
+                      <option value="Moletons">Moletons</option>
+                      <option value="Posters">Posters</option>
+                      <option value="Acessorios">Acessorios</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                 <div class="form-group">
+                  <label for="exampleFormControlSelect1">Temas</label>
+                  <select class="form-control" value="<%=dadosForm.temas%>" id="tema" name="tema">
+                    <option value="" >Selecione um tema</option>
+                    <option value="Animes">Animes</option>
+                    <option value="Series">Series</option>
+                    <option value="História em Quadrinhos">HQ</option>
+                    <option value="Desenhos">Desenhos</option>
+                  </select>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-4">
+              <label for="exampleInputName">Quantidade</label>
+              <input class="form-control" id="quantidade" value="<%=dadosForm.quantidade%>" name="quantidade" type="number" aria-describedby="nameHelp" placeholder="Quantidade">
+            </div>
+
+            <div class="col-md-4">
+              <label for="exampleInputName">Valor</label>
+              <input class="form-control" id="valor" value="<%=dadosForm.valor%>" name="valor" type="number" aria-describedby="nameHelp" placeholder="Quantidade">
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Sexo</label>
+                <select class="form-control" value="<%=dadosForm.sexo%>" id="sexo" name="sexo">
+                  <option value="" >Selecione um Sexo</option>
+                  <option value="masculino">masculino</option>
+                  <option value="Feminino">Feminino</option>
+                </select>
+              </div>
+            </div>
+            <br>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-6">
+                  <label for="exampleInputName">Descrição</label>
+                  <input class="form-control" value="<%=dadosForm.descricao%>" id="descricao" name="descricao" type="text" aria-describedby="nameHelp" placeholder="Descrição">
+                </div>
+                <div class="col-md-6">
+                  <label for="exampleInputLastName">Imagem Do Produto</label>
+                  <input class="form-control" value="<%=dadosForm.imagem%>" id="imagem" type="file" name="imagem">
+                </div>
+
+              </div>
+            </div>
+            <!-- ação a ser executada no controller -->
+            <input type="hidden" name="action" value="create">
+            <br>
+
+            <div class="col-md-6">
+              <button disabled class="btn btn-info btn-block" id="voltar">  Voltar  </button>
+            </div>
+
+             <div class="col-md-6">
+              <button  type="submit" class="btn btn-success btn-block" id="cadastrar"> Cadastrar  </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<footer class="footer" >
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="footer_nav_container d-flex flex-sm-row flex-column align-items-center justify-content-lg-start justify-content-center text-center">
+          <ul class="footer_nav">
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="contact.html">Contact us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="footer_social d-flex flex-row align-items-center justify-content-lg-end justify-content-center">
+          <ul>
+            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="footer_nav_container">
+          <div class="cr text-center"> <<strong>©XenaStore 2018</strong> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+
+</html>
+
+<script type="text/javascript" charset="utf-8" async defer>
+   $(document).click(function(){
+      $('#voltar').click(function(){
+         alert("voltar")
+         // window.location.href= '/sair';
+
+      });
+   });
+</script>
