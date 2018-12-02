@@ -27,7 +27,7 @@ module.exports.cadastro = function (application, req, res){
 module.exports.inserir = function (application, req, res){
 
   var dadosForm = req.body;
-  console.log(dadosForm);
+
 	req.assert('name_product', 'Nome do produto não pode ser nulo').notEmpty();
 	req.assert('category', 'Categoria não pode ser vazio').notEmpty();
 	req.assert('tema', 'Tema não pode ser vazio').notEmpty();

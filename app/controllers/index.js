@@ -7,7 +7,11 @@ module.exports.index = function(application, req, res){
 }
 
 module.exports.admin = function(application, req, res){
-	res.render('admin/index');
+	if (req.session.autorizado){
+              res.render('admin/index');
+	}else{
+		res.send("e necesario fazer login");
+	}
 }
 
 

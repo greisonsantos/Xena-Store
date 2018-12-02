@@ -3,33 +3,31 @@ module.exports.cadastroUser = function(application, req, res){
 
 
 	var dadosForm = req.body;
-	console.log(dadosForm);
 
-	req.assert('nome', 'Nome não pode ser vazio').notEmpty();
-	req.assert('email', 'Usuário não pode ser vazio').notEmpty();
-	req.assert('telefone', 'Senha não pode ser vazio').notEmpty();
-	req.assert('cidade', 'Casa não pode ser vazio').notEmpty();
-	req.assert('estado', 'Casa não pode ser vazio').notEmpty();
-	req.assert('cep', 'Casa não pode ser vazio').notEmpty();
-	req.assert('bairro', 'Casa não pode ser vazio').notEmpty();
-	req.assert('rua', 'Casa não pode ser vazio').notEmpty();
-	req.assert('numero', 'Casa não pode ser vazio').notEmpty();
-	req.assert('senha', 'Casa não pode ser vazio').notEmpty();
-	req.assert('confsenha', 'Casa não pode ser vazio').notEmpty();
+
+	req.assert('nome', 'nome não pode ser vazio').notEmpty();
+	req.assert('email', 'email invalido').isEmail();
+	req.assert('telefone', 'telefone não pode ser vazio').notEmpty();
+	req.assert('cidade', 'cidade não pode ser vazio').notEmpty();
+	req.assert('estado', 'estado não pode ser vazio').notEmpty();
+	req.assert('cep', 'cep não pode ser vazio').notEmpty();
+	req.assert('bairro', 'bairro não pode ser vazio').notEmpty();
+	req.assert('rua', 'rua não pode ser vazio').notEmpty();
+	req.assert('numero', 'numero não pode ser vazio').notEmpty();
+	req.assert('senha', 'Insira uma senha de no mínimo 8 caracteres').len(8,32);
+	req.assert('confsenha', 'As senhas não são compatíveis').equals(dadosForm.senha);
 
 	var erros = req.validationErrors();
 
 	if(erros){
-		res.render('auth/cadastroUser', {validacao: erros, dadosForm: dadosForm});
+		res.render('auth/cadastroUser', {validacao: erros, dadosForm: dadosForm, sucesso:{}});
 		return;
 	}
 
 	var connection = application.config.dbConnection;
 	var User = new application.app.models.User(connection);
 
-	User.inserirUser(dadosForm);
-
-	res.send('user cadastrado');
+	User.inserirUser(dadosForm, res);
 }
 
 

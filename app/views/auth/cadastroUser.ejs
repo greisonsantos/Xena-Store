@@ -15,55 +15,77 @@
 <link rel="stylesheet" type="text/css" href="styles/categories_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/categories_responsive.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="shortcut icon" type="image/x-icon" href="logo/favicon.ico">
 </head>
 
 <body>
 <br><br><br><br><br><br>
 <div class="container">
+   <% if(validacao.length > 0) { %>
+    <div class="alert alert-danger">
+      <strong>Atenção!</strong>
+      <ul>
+        <% for(var i = 0; i < validacao.length; i++) { %>
+        <li><%=validacao[i].msg%></li>
+        <% } %>
+      </ul>
+    </div>
+    <% } %>
+
+     <% if(sucesso.length > 0) { %>
+    <div class="alert alert-success">
+      <strong>Sucesso</strong>
+      <ul>
+
+        <li>Usuário cadastrado com sucesso !</li>
+      </ul>
+    </div>
+    <% } %>
+
 <form action="/cadastroUser" method="post">
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationDefault01">Nome</label>
-      <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome">
+      <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" value="<%=dadosForm.nome%>" >
     </div>
     <div class="col-md-4 mb-3">
       <label for="validationDefault02">Email</label>
-      <input type="text" class="form-control" id="email" name="email" placeholder="email" value="">
+      <input type="text" class="form-control" id="email" name="email" placeholder="email" value="<%=dadosForm.email%>">
     </div>
     <div class="col-md-4 mb-3">
       <label for="validationDefaultUsername">Telefone</label>
       <div class="input-group">
 
-        <input type="number" class="form-control" id="telefone" name="telefone" placeholder="telefone">
+        <input type="number" class="form-control" id="telefone" name="telefone" placeholder="telefone" value="<%=dadosForm.telefone%>">
       </div>
     </div>
   </div>
   <div class="form-row">
     <div class="col-md-6 mb-3">
       <label for="validationDefault03">Cidade</label>
-      <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade">
+      <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade" value="<%=dadosForm.cidade%>">
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationDefault04">Estado</label>
-      <input type="text" class="form-control" id="estado" name="estado" placeholder="Estado" >
+      <input type="text" class="form-control" id="estado" name="estado" placeholder="Estado" value="<%=dadosForm.estado%>" >
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationDefault05">Cep</label>
-      <input type="text" class="form-control" id="cep" name="cep" placeholder="00000-000" >
+      <input type="text" class="form-control" id="cep" name="cep" placeholder="00000-000"  value="<%=dadosForm.cep%>">
     </div>
   </div>
    <div class="form-row">
     <div class="col-md-6 mb-3">
       <label for="validationDefault03">Bairro</label>
-      <input type="text" class="form-control" id="bairro" name="bairro" placeholder="bairro" >
+      <input type="text" class="form-control" id="bairro" name="bairro" placeholder="bairro" value="<%=dadosForm.bairro%>" >
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationDefault04">Rua</label>
-      <input type="text" class="form-control" id="rua" name="rua" placeholder="rua" >
+      <input type="text" class="form-control" id="rua" name="rua" placeholder="rua" value="<%=dadosForm.rua%>" >
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationDefault05">Número</label>
-      <input type="number" class="form-control" id="numero" name="numero" placeholder="numero" >
+      <input type="number" class="form-control" id="numero" name="numero" placeholder="numero" value="<%=dadosForm.numero%>">
     </div>
   </div>
   <div class="form-row">
@@ -74,11 +96,17 @@
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationDefault05">Comfirmar Senha</label>
-      <input type="text" class="form-control" id="confsenha" name="confsenha" placeholder="********" >
+      <input type="password" class="form-control" id="confsenha" name="confsenha" placeholder="********" >
     </div>
+    <input type="hidden" name="tipoUser" value="cliente">
   </div>
   <button class="btn btn-primary" type="submit">Cadastrar</button>
 </form>
+<div class="card-footer">
+        <div class="d-flex justify-content-center links">
+          <a href="/">Voltar ao Site</a>
+        </div>
+      </div>
 </div>
 </body>
 
