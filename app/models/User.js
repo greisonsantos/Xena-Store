@@ -21,9 +21,10 @@ User.prototype.inserirUser = function(user, res){
 		   mongoclient.close();
 		});
 	});
+
     var sucesso= 'sucesso';
     console.log(sucesso);
-	res.render('auth/cadastroUser', {validacao:{}, dadosForm: {}, sucesso:sucesso});
+	res.render('admin/views/user/formAddAdmin', {validacao:{}, dadosForm: {}, sucesso:sucesso});
 }
 
 module.exports = function(){
