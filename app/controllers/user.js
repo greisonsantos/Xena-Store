@@ -64,3 +64,21 @@ module.exports.addAdmin = function(application, req, res){
 
 	User.inserirUser(dadosForm, res);
 }
+
+module.exports.listUser = function (application, req, res){
+
+     var connection = application.config.dbConnection;
+	 var User = new application.app.models.User(connection);
+
+	User.listUser(req, res);
+
+}
+
+module.exports.listCli = function (application, req, res){
+
+     var connection = application.config.dbConnection;
+	 var User = new application.app.models.User(connection);
+
+	User.listCli(req, res);
+
+}

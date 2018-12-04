@@ -115,7 +115,7 @@
                     <label for="exampleFormControlSelect1">Categoria</label>
                     <select class="form-control" id="category" name="category" value="<%=dadosForm.category%>">
                       <option value=""> Selecione uma Categoria</option>
-                      <option value="Camisa">Camisas</option>
+                      <option value="Camisas">Camisas</option>
                       <option value="Moletons">Moletons</option>
                       <option value="Posters">Posters</option>
                       <option value="Acessorios">Acessorios</option>
@@ -173,13 +173,7 @@
 
               </div>
             </div>
-            <!-- ação a ser executada no controller -->
-            <input type="hidden" name="action" value="create">
             <br>
-
-            <div class="col-md-6">
-              <button disabled class="btn btn-info btn-block" id="voltar">  Voltar  </button>
-            </div>
 
              <div class="col-md-6">
               <button  type="submit" class="btn btn-success btn-block" id="cadastrar"> Cadastrar  </button>
@@ -187,9 +181,10 @@
           </form>
         </div>
       </div>
-    </div>
+
   </div>
 </div>
+
 <!-- Footer -->
 <footer class="footer" >
   <div class="container">
@@ -228,12 +223,11 @@
 </body>
 
 </html>
-
+<script src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" charset="utf-8" async defer>
-   $(document).click(function(){
+   $(document).ready(function(){
       $('#voltar').click(function(){
-         alert("voltar")
-         // window.location.href= '/sair';
+         window.location.href= '/menu-produto';
 
       });
    });

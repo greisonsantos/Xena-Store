@@ -27,6 +27,42 @@ User.prototype.inserirUser = function(user, res){
 	res.render('admin/views/user/formAddAdmin', {validacao:{}, dadosForm: {}, sucesso:sucesso});
 }
 
+User.prototype.listUser = function(req, res){
+	this._connection.open( function(err, mongoclient){
+		mongoclient.collection("usuarios", function(err, collection){
+			collection.find({tipoUser: {$eq: 'admin'}}).toArray(function(err,result){
+
+       //se o resultado for diferente de vazio crio a sessão
+       if(result[0] !=undefined){
+
+              res.render('admin/views/user/listUser',{dados:result});
+
+            }
+        });
+			mongoclient.close();
+		});
+	});
+
+}
+
+User.prototype.listCli = function(req, res){
+	this._connection.open( function(err, mongoclient){
+		mongoclient.collection("usuarios", function(err, collection){
+			collection.find({tipoUser: {$eq: 'cliente'}}).toArray(function(err,result){
+
+       //se o resultado for diferente de vazio crio a sessão
+       if(result[0] !=undefined){
+
+              res.render('admin/views/user/listCli',{dados:result});
+            }
+        });
+			mongoclient.close();
+		});
+	});
+
+}
+
+
 module.exports = function(){
 	return User;
 }

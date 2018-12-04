@@ -95,11 +95,9 @@
         <thead class="thead-dark">
           <tr>
            <th>Nome</th>
-           <th>Categoria</th>
-           <th>Tema</th>
-           <th>Quantidade</th>
-           <th>Valor</th>
-           <th>Descrição</th>
+           <th>Email</th>
+           <th>Telefone</th>
+           <th>Cpf</th>
            <th class=" text-center">Editar</th>
            <th class=" text-center">Excluir</th>
          </tr>
@@ -107,12 +105,10 @@
        <tbody>
         <% for(var i = 0; i < dados.length; i++) { %>
         <tr>
-          <td><%=dados[i].name_product%></td>
-          <td><%=dados[i].category%></td>
-          <td><%=dados[i].tema%></td>
-          <td><%=dados[i].quantidade%></td>
-          <td><%=dados[i].valor%></td>
-          <td><%=dados[i].descricao%></td>
+          <td><%=dados[i].nome%></td>
+          <td><%=dados[i].email%></td>
+          <td><%=dados[i].telefone%></td>
+          <td><%=dados[i].cpf%></td>
           <td class="text-center  ">
             <a href="/edit" style="color: inherit;">
               <div style="height:100%; width:100%;">
@@ -180,7 +176,7 @@
 <script type="text/javascript" charset="utf-8" async defer>
    $(document).ready(function(){
       $('#voltar').click(function(){
-         window.location.href= '/menu-produto';
+         window.location.href= '/home_usuarios';
 
       });
    });

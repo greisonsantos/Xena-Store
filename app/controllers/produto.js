@@ -3,20 +3,40 @@ module.exports.menuProduto = function(application, req, res){
 	res.render('admin/views/estoque/home_estoque');
 }
 
+
 module.exports.camisas = function (application, req, res){
-	res.render('cliente/camisas');
+
+     var connection = application.config.dbConnection;
+	 var Produtos = new application.app.models.Produtos(connection);
+
+	 Produtos.getCamisas(req, res);
+
 }
 
+
+
 module.exports.moletons = function (application, req, res){
-	res.render('cliente/moletons');
+
+	 var connection = application.config.dbConnection;
+	 var Produtos = new application.app.models.Produtos(connection);
+
+	 Produtos.getMoletons(req, res);
 }
 
 module.exports.posters = function (application, req, res){
-	res.render('cliente/posters');
+	 
+	 var connection = application.config.dbConnection;
+	 var Produtos = new application.app.models.Produtos(connection);
+
+	 Produtos.getPosters(req, res);
 }
 
 module.exports.acessorios = function (application, req, res){
-	res.render('cliente/acessorios');
+
+	 var connection = application.config.dbConnection;
+	 var Produtos = new application.app.models.Produtos(connection);
+
+	 Produtos.getAcessorios(req, res);
 }
 
 

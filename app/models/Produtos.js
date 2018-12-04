@@ -54,35 +54,86 @@ Produtos.prototype.listProductIndex = function(req, res){
 
 }
 
-//recebe os dados do form do user e compara com os dados do db
-// UsuariosDAO.prototype.autenticar = function(usuario, req, res){
-//   this._connection.open( function(err, mongoclient){
-// 		mongoclient.collection("usuarios", function(err, collection){
-// 			collection.find(usuario).toArray(function(err,result){
-// 				console.log(result);
+//recupera as camisas
 
-//        //se o resultado for diferente de vazio crio a sessão
-//                if(result[0] !=undefined){
+Produtos.prototype.getCamisas = function(req, res){
+	this._connection.open( function(err, mongoclient){
+		mongoclient.collection("produtos", function(err, collection){
+			collection.find({category:{$eq:"Camisas"}}).toArray(function(err,result){
+				console.log(result);
 
-//                   req.session.autorizado = true;  //inica a sessão
+       //se o resultado for diferente de vazio crio a sessão
+       if(result[0] !=undefined){
+              res.render('cliente/camisas',{dados:result});
 
-//                   req.session.usuario = result[0].usuario;  //inica a sessão
-//                   req.session.casa = result[0].casa;  //inica a sessão
+            }else{
+            	 res.render('cliente/camisas',{dados:result});
+            }
+        });
+			mongoclient.close();
+		});
+	});
 
-//                }
-//                if (req.session.autorizado){
-//                     res.redirect("jogo");
-//                }else{
-//                	  res.render("index",{validacao:{}});
-//                }
-// 			// ou assim  collection.find(usuario);
+}
 
-// 		});
-// 		mongoclient.close();
-// 	});
-// 		});
+Produtos.prototype.getMoletons= function(req, res){
+	this._connection.open( function(err, mongoclient){
+		mongoclient.collection("produtos", function(err, collection){
+			collection.find({category:{$eq:"Moletons"}}).toArray(function(err,result){
+				console.log(result);
 
-// }
+       //se o resultado for diferente de vazio crio a sessão
+       if(result[0] !=undefined){
+              res.render('cliente/camisas',{dados:result});
+
+         }else{
+         	 res.render('cliente/camisas',{dados:result});
+         }
+        });
+			mongoclient.close();
+		});
+	});
+
+}
+
+Produtos.prototype.getPosters= function(req, res){
+	this._connection.open( function(err, mongoclient){
+		mongoclient.collection("produtos", function(err, collection){
+			collection.find({category:{$eq:"Posters"}}).toArray(function(err,result){
+				console.log(result);
+
+       //se o resultado for diferente de vazio crio a sessão
+       if(result[0] !=undefined){
+              res.render('cliente/posters',{dados:result});
+
+         }else{
+         	 res.render('cliente/posters',{dados:result});
+         }
+        });
+			mongoclient.close();
+		});
+	});
+
+}
+Produtos.prototype.getAcessorios= function(req, res){
+	this._connection.open( function(err, mongoclient){
+		mongoclient.collection("produtos", function(err, collection){
+			collection.find({category:{$eq:"Acessorios"}}).toArray(function(err,result){
+				console.log(result);
+
+       //se o resultado for diferente de vazio crio a sessão
+       if(result[0] !=undefined){
+              res.render('cliente/acessorios',{dados:result});
+
+         }else{
+         	 res.render('cliente/acessorios',{dados:result});
+         }
+        });
+			mongoclient.close();
+		});
+	});
+
+}
 
 module.exports = function(){
 	return Produtos;

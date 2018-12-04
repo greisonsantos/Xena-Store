@@ -24,4 +24,12 @@ module.exports = function(application){
 		application.app.controllers.user.addAdmin(application, req, res);
 	});
 
+	application.get('/listUser', function(req, res){
+		application.app.controllers.user.listUser(application, req, res);
+	});
+
+	application.get('/listcli', function(req, res){
+		application.app.controllers.user.listCli(application, req, res);
+	});
+
 }

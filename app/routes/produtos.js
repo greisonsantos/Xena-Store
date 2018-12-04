@@ -23,19 +23,13 @@ module.exports = function(application){
 
    //route crude de produtos
 	application.get('/cadastroProduto', function(req, res){
-		if(req.session.tipoUser=='cliente'){ 
 		     application.app.controllers.produto.cadastro(application, req, res);
-	   }else{
-             res.render("notfound");
-	   }
+
 	});
 
 	application.post('/inserirProduto', function(req, res){
-		if(req.session.tipoUser=='cliente'){ 
 		     application.app.controllers.produto.inserir(application, req, res);
-		}else{
-             res.render("notfound");
-	    }
+
 	});
 
 	application.get('/listProduct', function(req, res){
