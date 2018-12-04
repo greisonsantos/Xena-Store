@@ -84,5 +84,11 @@ module.exports.list = function (application, req, res){
 
 module.exports.edit = function (application, req, res){
     
-	res.render('admin/views/estoque/editProduct',{validacao:{}, dadosForm:{}});
+
+     var connection = application.config.dbConnection;
+	 var Produtos = new application.app.models.Produtos(connection);
+
+	 // Produtos.editProduct(req, res,id);
+	res.render('admin/views/estoque/editProducts',{validacao:{}, dadosForm:{}});
+
 }

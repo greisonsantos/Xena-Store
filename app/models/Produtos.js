@@ -1,3 +1,4 @@
+
 function Produtos(connection){
 	this._connection = connection();
 }
@@ -127,6 +128,28 @@ Produtos.prototype.getAcessorios= function(req, res){
 
          }else{
          	 res.render('cliente/acessorios',{dados:result});
+         }
+        });
+			mongoclient.close();
+		});
+	});
+
+}
+
+Produtos.prototype.editProduct= function(req, res, id){
+	console.log(id);
+	this._connection.open( function(err, mongoclient){
+		mongoclient.collection("produtos", function(err, collection){
+			collection.find().toArray(function(err,result){
+				console.log(result);
+
+       //se o resultado for diferente de vazio crio a sessão
+       if(result[0] !=undefined){
+       	console.log("passou");
+              res.render('admin/views/estoque/editProducts',{validacao:{}, dadosForm:{}, result:result});
+
+         }else{
+         	  res.render('admin/views/estoque/editProduct',{validacao:{}, dadosForm:{},result:result});
          }
         });
 			mongoclient.close();

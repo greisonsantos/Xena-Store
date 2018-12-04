@@ -1,3 +1,5 @@
+
+
 module.exports = function(application){
 
      application.get('/menu-produto', function(req, res){
@@ -33,19 +35,12 @@ module.exports = function(application){
 	});
 
 	application.get('/listProduct', function(req, res){
-		if(req.session.tipoUser=='cliente'){ 
 		     application.app.controllers.produto.list(application, req, res);
-		}else{
-             res.render("notfound");
-	    }
 	});
 
     application.get('/edit', function(req, res){
-    	if(req.session.tipoUser=='cliente'){ 
 		     application.app.controllers.produto.edit(application, req, res);
-		}else{
-             res.render("notfound");
-        }
+
 	});
 
 }

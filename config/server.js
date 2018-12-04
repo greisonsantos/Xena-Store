@@ -11,6 +11,7 @@ var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
 var expressSession = require('express-session');
 
+
 /* iniciar o objeto do express */
 var app = express();
 
@@ -27,6 +28,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 /* configurar o middleware express-validator */
 app.use(expressValidator());
+
 
 
 /* configurar o middleware express-session  recebe 3 parametros*/ 
